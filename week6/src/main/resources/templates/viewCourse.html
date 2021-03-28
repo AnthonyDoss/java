@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="ISO-8859-1">
+      <title>Insert title here</title>
+   </head>
+   <h1>View by Courses</h1>
+   <body>
+      <form th:action="@{/viewCourse}" method="post">
+         Course : 
+         <select name="course">
+            <option th:each="cor : ${courses}" th:value="${cor.id}" th:text="${cor.name}">
+         </select>
+         <input type="submit" value="View Course" />
+      </form>
+      <br><br>
+      <div th:if="${course != null}">
+         <h1 th:text="'Course Name :'+${course.name}"></h1>
+         <div th:if="${course.professor != null}">
+            <h2 th:text="${course.professor.name}"></h2>
+         </div>
+         <div th:unless="${course.professor != null}">
+            <h2>NO Professor was assigned</h2>
+         </div>
+         <table>
+         <tr th:each="stu : ${course.students}">
+         <td th:text="${stu.name}"></td>
+         <td><a th:href="@{/delete/{id}/{corId}(id=${stu.id} , corId=${course.id})}">DROP</a>
+         </tr>
+         
+         </table>
+      </div>
+      <a th:href="@{/}">Home</a>
+   </body>
+</html>

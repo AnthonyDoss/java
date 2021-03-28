@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>Add Proff page</h1>
+
+<form action= "#" th:action="@{/addProff}" method="post" >
+Name : <input type="text" name="name"><br>
+
+<input type="submit" value="Add Proff" />
+</form>
+
+<a th:href="@{/}" >Home</a>
+</body>
+</html>

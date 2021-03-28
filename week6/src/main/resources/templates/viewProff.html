@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+<h1>View by Courses</h1>
+<body>
+<form th:action="@{/viewProff}" method="post">
+
+Proff : <select name="proffId">
+<option th:each="proff : ${proffs}" th:value="${proff.id}" th:text="${proff.name}">
+</select>
+
+<input type="submit" value="View Proff" />
+</form>
+<br><br>
+
+<div th:if="${proff != null}">
+
+<h1 th:text="${proff.name}"></h1>
+
+<div th:if="${proff.courses != null}">
+
+<div th:each="cor : ${proff.courses}">
+<h2 th:text="${cor.name}"></h2>
+</div>
+
+</div>
+<div th:unless="${proff.courses != null}">
+<h2>No course was assigned</h2>
+</div>
+<div th:each="cor : ${proff.courses}">
+<ol>
+	<li th:each="stu : ${cor.students}" th:text="${stu.name}"></li>
+</ol>
+
+
+</div>
+
+</div>
+<a th:href="@{/}">Home</a>
+</body>
+</html>

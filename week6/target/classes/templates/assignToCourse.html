@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+
+
+<body>
+<form th:action="@{/assignToCourse}" method="post">
+Student : <select name="name">
+<option th:each="stu : ${students}" th:value="${stu.name}" th:text="${stu.name}">
+</select>
+
+
+Course : <select name="course">
+<option th:each="cor : ${courses}" th:value="${cor.id}" th:text="${cor.name}">
+</select>
+
+<input type="submit" value="View Courses" />
+</form>
+<a th:href="@{/}">Home</a>
+</body>
+</html>
